@@ -1,0 +1,18 @@
+.userPhoto {
+  width: 100px;
+  height: 100px;
+}
+
+.selectedPage {
+  font-weight: bold;
+}
+
+.pagesContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.pagesContainer span {
+  cursor: pointer;
+}

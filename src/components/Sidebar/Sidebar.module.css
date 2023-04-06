@@ -1,0 +1,21 @@
+.sidebar {
+  color: white;
+  margin-top: 40px;
+}
+.sidebarTitle {
+  font-size: 2em;
+}
+.sidebarList {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebarList li {
+  padding: 10px;
+}
+.sidebarList li:first-child {
+  padding-left: 0px;
+}
+.sidebarList li:last-child {
+  padding-right: 0px;
+}

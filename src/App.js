@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom'
+
+import { Header } from './components/Header';
+import { Navbar } from './components/Navbar';
+import { Profile } from './components/Profile';
+import { DialogsContainer } from './components/Dialogs';
+import { UsersContainer } from './components/Users';
+
 import './App.css';
 
-function App() {
+//TODO https://reactrouter.com/en/main/start/tutorial
+
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app-wrapper'>
+      <Header />
+      <Navbar />
+      <div className='app-wrapper-content'>
+        <Routes>
+          <Route path="/" element={``} />
+          <Route
+            path="/dialogs"
+            element={<DialogsContainer />}
+          />
+          <Route
+            path="/profile"
+            element={<Profile />}
+          />
+          <Route
+            path="/users"
+            element={<UsersContainer />}
+          />
+        </Routes>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
