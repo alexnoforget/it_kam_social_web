@@ -7,11 +7,14 @@ import classes from './MyPosts.module.css'
 export const MyPosts = ({
   posts,
   newPostText,
-  postChange,
-  addPost }) => {
+  addPost,
+  updateNewPostText, }) => {
   const inputRef = useRef(null)
-  const onChange = () => postChange(inputRef.current.value)
-  const onClick = () => addPost(inputRef.current.value)
+  const onChange = () => updateNewPostText(inputRef.current.value)
+  const onClick = () => {
+    if (!inputRef.current.value.trim().length) return
+    addPost(inputRef.current.value)
+  }
 
   return (
     <div className={classes.postsBlock}>

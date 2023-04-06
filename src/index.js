@@ -11,23 +11,14 @@ import App from './App';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export const rerenderEntireTree = (state) => root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App
-          dispatch={store.dispatch.bind(store)}
-          state={state}
-        />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+root.render(
+  // <React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
+  // </React.StrictMode>
 )
-
-rerenderEntireTree(store.getState())
-
-store.subscribe(() => {
-  rerenderEntireTree(store.getState())
-})
 
 reportWebVitals();

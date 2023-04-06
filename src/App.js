@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import { Header } from './components/Header';
 import { Navbar } from './components/Navbar';
-import { Profile } from './components/Profile';
+import { ProfileContainer } from './components/Profile';
 import { DialogsContainer } from './components/Dialogs';
 import { UsersContainer } from './components/Users';
 
@@ -10,7 +10,7 @@ import './App.css';
 
 //TODO https://reactrouter.com/en/main/start/tutorial
 
-const App = (props) => {
+const App = () => {
   return (
     <div className='app-wrapper'>
       <Header />
@@ -23,8 +23,8 @@ const App = (props) => {
             element={<DialogsContainer />}
           />
           <Route
-            path="/profile"
-            element={<Profile />}
+            path="/profile/:profileId?"
+            element={<ProfileContainer />}
           />
           <Route
             path="/users"

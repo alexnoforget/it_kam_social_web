@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import React, { useEffect, useMemo } from 'react'
 import { Users } from './Users'
-import preloader from '../../assets/images/loader.svg'
+import { Preloader } from './Preloader'
 
 
 export const UsersApiController = ({
@@ -32,7 +33,7 @@ export const UsersApiController = ({
 
     const controller = new AbortController();
 
-    axios.get('https://social-network.samuraijs.com/api/1.0/users?',
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${pageSize}`,
       { signal: controller.signal })
       .then(({ data }) => {
         setIsFetching(false)
@@ -70,7 +71,7 @@ export const UsersApiController = ({
           currentPage={currentPage}
           users={users}
           handleFollowClick={handleFollowClick}
-        />) : <img alt='preloader' src={preloader} />}
+        />) : <Preloader />}
     </>
 
   )

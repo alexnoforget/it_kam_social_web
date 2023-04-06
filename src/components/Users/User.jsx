@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import userPhoto from '../../assets/images/user.png'
 import classes from './Users.module.css'
 
@@ -10,10 +11,13 @@ export const User = (props) => {
     <div >
       <span>
         <div>
-          <img
-            className={classes.userPhoto}
-            alt=''
-            src={user.photos.small || userPhoto} />
+          <NavLink to={`/profile/${user.id}`}>
+            <img
+              className={classes.userPhoto}
+              alt=''
+              src={user.photos.small || userPhoto} />
+          </NavLink>
+
         </div>
         <div>
           <button onClick={handleFollowClick(user.id)}
