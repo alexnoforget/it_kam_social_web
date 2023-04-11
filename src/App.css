@@ -7,7 +7,7 @@
 
 .app-wrapper {
   display: grid;
-  width: 100vw;
+  width: 90vw;
 
   grid-template-areas:
     'h h'
@@ -16,6 +16,7 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   /* grid-gap: 10px; */
+  margin: 0 auto;
 }
 
 .app-wrapper-content {
