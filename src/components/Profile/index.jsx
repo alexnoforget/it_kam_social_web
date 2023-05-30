@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { getProfile } from '../../api/api';
 
 import { setUserProfile } from '../../redux/profileReducer'
 import { Profile } from './Profile'
@@ -16,8 +16,7 @@ const ProfileApiContainer = (props) => {
     if (!profileId) return
     const controller = new AbortController();
 
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${profileId}`,
-      { signal: controller.signal })
+    getProfile(profileId, controller.signal)
       .then(({ data }) => setUserProfile(data)
       )
 

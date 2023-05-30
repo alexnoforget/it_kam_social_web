@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import axios from 'axios'
 import React, { useEffect, useMemo } from 'react'
 import { Users } from './Users'
 import { Preloader } from './Preloader'
+import { getUser } from '../../api/api'
 
 
 export const UsersApiController = ({
@@ -32,9 +32,11 @@ export const UsersApiController = ({
     setIsFetching(true)
 
     const controller = new AbortController();
+    const params = new URLSearchParams({
+      count: pageSize,
+    }).toString()
 
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${pageSize}`,
-      { signal: controller.signal })
+    getUser(params, controller.signal)
       .then(({ data }) => {
         setIsFetching(false)
         setUsers(data.items)
@@ -55,7 +57,7 @@ export const UsersApiController = ({
       page: pageNumber,
     }).toString()
 
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?${params}`)
+    getUser(params)
       .then(({ data }) => {
         setIsFetching(false)
         setUsers(data.items)

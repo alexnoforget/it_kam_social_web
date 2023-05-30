@@ -1,28 +1,23 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Header } from ".";
+import { getMe } from "../../api/api";
 import { setAuthUserData } from "../../redux/authReducer"
 
 export const HeaderApiContainer = (props) => {
   const { setAuthUserData } = props
 
   useEffect(() => {
-    const controller = new AbortController();
+    const controller = new AbortController()
 
-    axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,
-      {
-        signal: controller.signal,
-        withCredentials: true,
-      })
-      .then(({ data }) => {
-        const { id, email, login } = data.data
+    getMe(controller.signal).then(({ data }) => {
+      const { id, email, login } = data.data
 
-        if (data.resultCode === 0) {
-          setAuthUserData(id, email, login)
-        }
+      if (data.resultCode === 0) {
+        setAuthUserData(id, email, login)
       }
-      )
+    }
+    )
 
     return () => controller.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
